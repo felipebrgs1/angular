@@ -2,6 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { CartService } from '../../core/services/cart.service';
+import { NotificationService } from '../../core/services/notification.service';
 import { CurrencyBrPipe } from '../../shared/pipes/currency-br.pipe';
 import { cpfValidator } from '../../shared/validators/cpf.validator';
 import { cepValidator } from '../../shared/validators/cep.validator';
@@ -172,6 +173,7 @@ import { cepValidator } from '../../shared/validators/cep.validator';
 })
 export class CheckoutComponent {
   private fb = inject(FormBuilder);
+  private notif = inject(NotificationService);
   protected cart = inject(CartService);
 
   protected step = signal<'form' | 'confirmation'>('form');
@@ -248,6 +250,7 @@ export class CheckoutComponent {
       this.cart.clear();
       this.submitting.set(false);
       this.step.set('confirmation');
+      this.notif.success('Pedido realizado com sucesso!');
     }, 2000);
   }
 }

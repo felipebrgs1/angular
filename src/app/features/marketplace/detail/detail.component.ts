@@ -4,6 +4,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { map, switchMap, shareReplay, tap } from 'rxjs/operators';
 import { ProductService } from '../../../core/services/product.service';
 import { CartService } from '../../../core/services/cart.service';
+import { NotificationService } from '../../../core/services/notification.service';
 import { CurrencyBrPipe } from '../../../shared/pipes/currency-br.pipe';
 
 @Component({
@@ -87,6 +88,7 @@ export class DetailComponent {
   private route = inject(ActivatedRoute);
   private productService = inject(ProductService);
   private cartService = inject(CartService);
+  private notif = inject(NotificationService);
 
   protected loading = signal(true);
   protected added = signal(false);
@@ -103,6 +105,7 @@ export class DetailComponent {
   protected addToCart(p: NonNullable<ReturnType<typeof this.product>>) {
     this.cartService.add({ id: p.id, title: p.title, price: p.price, image: p.image });
     this.added.set(true);
+    this.notif.success('Adicionado ao carrinho!');
     setTimeout(() => this.added.set(false), 2000);
   }
 }
