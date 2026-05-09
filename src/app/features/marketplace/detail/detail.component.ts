@@ -3,6 +3,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map, switchMap, shareReplay, tap } from 'rxjs/operators';
 import { ProductService } from '../../../core/services/product.service';
+import { CartService } from '../../../core/services/cart.service';
 import { CurrencyBrPipe } from '../../../shared/pipes/currency-br.pipe';
 
 @Component({
@@ -60,8 +61,16 @@ import { CurrencyBrPipe } from '../../../shared/pipes/currency-br.pipe';
               <p class="text-sm text-muted-foreground">{{ p.sales }} vendidos</p>
             }
 
-            <button class="px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition">
-              Adicionar ao carrinho
+            <button
+              (click)="addToCart(p)"
+              class="px-6 py-3 font-semibold rounded-lg transition"
+              [class.bg-primary]="!added()"
+              [class.text-primary-foreground]="!added()"
+              [class.hover:bg-primary/90]="!added()"
+              [class.bg-secondary]="added()"
+              [class.text-secondary-foreground]="added()"
+            >
+              {{ added() ? 'Adicionado ao carrinho' : 'Adicionar ao carrinho' }}
             </button>
           </div>
         </div>
@@ -77,8 +86,10 @@ import { CurrencyBrPipe } from '../../../shared/pipes/currency-br.pipe';
 export class DetailComponent {
   private route = inject(ActivatedRoute);
   private productService = inject(ProductService);
+  private cartService = inject(CartService);
 
   protected loading = signal(true);
+  protected added = signal(false);
 
   private product$ = this.route.params.pipe(
     map(params => params['id']),
@@ -88,4 +99,10 @@ export class DetailComponent {
   );
 
   protected product = toSignal(this.product$, { initialValue: null });
+
+  protected addToCart(p: NonNullable<ReturnType<typeof this.product>>) {
+    this.cartService.add({ id: p.id, title: p.title, price: p.price, image: p.image });
+    this.added.set(true);
+    setTimeout(() => this.added.set(false), 2000);
+  }
 }
