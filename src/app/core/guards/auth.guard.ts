@@ -8,5 +8,6 @@ export const authGuard = () => {
 
   if (auth.isLogged()) return true;
 
+  auth.setReturnUrl(router.url);
   return router.parseUrl('/auth/login');
 };

@@ -4,7 +4,7 @@ import { Component, input } from '@angular/core';
   selector: 'app-badge',
   standalone: true,
   template: `
-    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary">
       {{ label() }}
     </span>
   `,

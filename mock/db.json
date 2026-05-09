@@ -1,0 +1,74 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Admin",
+      "email": "admin@email.com",
+      "password": "123456",
+      "role": "admin"
+    },
+    {
+      "id": "2",
+      "name": "Vendedor",
+      "email": "seller@email.com",
+      "password": "123456",
+      "role": "seller"
+    },
+    {
+      "id": "3",
+      "name": "Comprador",
+      "email": "buyer@email.com",
+      "password": "123456",
+      "role": "buyer"
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "title": "Dashboard Admin Pro",
+      "description": "Dashboard completo com gráficos, tabelas e dark mode.",
+      "price": 49.90,
+      "image": "https://picsum.photos/seed/admin/400/300",
+      "authorId": "2",
+      "approved": true
+    },
+    {
+      "id": "2",
+      "title": "Landing Page SaaS",
+      "description": "Template moderno para startups e produtos digitais.",
+      "price": 29.90,
+      "image": "https://picsum.photos/seed/saas/400/300",
+      "authorId": "2",
+      "approved": true
+    },
+    {
+      "id": "3",
+      "title": "Kit de Componentes UI",
+      "description": "Conjunto de botões, cards, modais e formulários.",
+      "price": 19.90,
+      "image": "https://picsum.photos/seed/ui/400/300",
+      "authorId": "2",
+      "approved": false
+    },
+    {
+      "id": "4",
+      "title": "Template E-commerce",
+      "description": "Layout completo para loja virtual com carrinho.",
+      "price": 39.90,
+      "image": "https://picsum.photos/seed/ecommerce/400/300",
+      "authorId": "2",
+      "approved": true
+    },
+    {
+      "id": "5",
+      "title": "Dashboard Financeiro",
+      "description": "Painel com gráficos de receitas, despesas e metas.",
+      "price": 59.90,
+      "image": "https://picsum.photos/seed/finance/400/300",
+      "authorId": "2",
+      "approved": true
+    }
+  ],
+  "purchases": [],
+  "sales": []
+}

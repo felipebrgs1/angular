@@ -4,8 +4,8 @@ import { Component } from '@angular/core';
   selector: 'app-product-card',
   standalone: true,
   template: `
-    <div class="border border-gray-200 rounded-xl p-4 hover:shadow-lg transition">
-      <p class="text-gray-500">ProductCard em breve</p>
+    <div class="border border-border rounded-xl p-4 hover:shadow-lg transition bg-card">
+      <p class="text-muted-foreground">ProductCard em breve</p>
     </div>
   `,
 })

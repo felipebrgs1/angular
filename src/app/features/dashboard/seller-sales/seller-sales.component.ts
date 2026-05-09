@@ -4,8 +4,8 @@ import { Component } from '@angular/core';
   selector: 'app-seller-sales',
   standalone: true,
   template: `
-    <h1 class="text-2xl font-bold mb-6">Vendas</h1>
-    <p class="text-gray-500">Nenhuma venda realizada.</p>
+    <h1 class="text-2xl font-bold mb-6 text-foreground">Vendas</h1>
+    <p class="text-muted-foreground">Nenhuma venda realizada.</p>
   `,
 })
 export class SellerSalesComponent {}
