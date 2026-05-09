@@ -1,8 +1,10 @@
 {
   "users": [
-    { "id": "1", "name": "Admin", "email": "admin@email.com", "password": "123456", "role": "admin" },
-    { "id": "2", "name": "Vendedor", "email": "seller@email.com", "password": "123456", "role": "seller" },
-    { "id": "3", "name": "Comprador", "email": "buyer@email.com", "password": "123456", "role": "buyer" }
+    { "id": "1", "name": "Admin", "email": "admin@email.com", "password": "123456", "role": "admin", "active": true },
+    { "id": "2", "name": "Vendedor", "email": "seller@email.com", "password": "123456", "role": "seller", "active": true },
+    { "id": "3", "name": "Comprador", "email": "buyer@email.com", "password": "123456", "role": "buyer", "active": true },
+    { "id": "4", "name": "João Silva", "email": "joao@email.com", "password": "123456", "role": "buyer", "active": true },
+    { "id": "5", "name": "Maria Souza", "email": "maria@email.com", "password": "123456", "role": "seller", "active": false }
   ],
   "products": [
     { "id": "1", "title": "Dashboard Admin Pro", "description": "Dashboard completo com gráficos interativos, tabelas responsivas e dark mode.", "price": 49.90, "image": "https://picsum.photos/seed/admin/600/400", "authorId": "2", "approved": true, "category": "Dashboards", "rating": 4.8, "sales": 234, "tags": ["admin","dashboard","dark-mode","charts"] },
@@ -10,7 +12,8 @@
     { "id": "3", "title": "Kit de Componentes UI", "description": "Conjunto completo de botões, cards, modais e formulários.", "price": 19.90, "image": "https://picsum.photos/seed/ui/600/400", "authorId": "2", "approved": false, "category": "Kits", "rating": 4.3, "sales": 567, "tags": ["ui","components","buttons"] },
     { "id": "4", "title": "Template E-commerce", "description": "Layout completo para loja virtual com vitrine e carrinho.", "price": 39.90, "image": "https://picsum.photos/seed/ecommerce/600/400", "authorId": "2", "approved": true, "category": "Dashboards", "rating": 4.7, "sales": 412, "tags": ["ecommerce","loja","carrinho"] },
     { "id": "5", "title": "Dashboard Financeiro", "description": "Painel com gráficos de receitas, despesas e metas financeiras.", "price": 59.90, "image": "https://picsum.photos/seed/finance/600/400", "authorId": "2", "approved": true, "category": "Dashboards", "rating": 4.9, "sales": 98, "tags": ["financeiro","graficos","fintech"] },
-    { "id": "6", "title": "Portfolio para Devs", "description": "Template de portfólio moderno com seções de projetos.", "price": 14.90, "image": "https://picsum.photos/seed/portfolio/600/400", "authorId": "2", "approved": true, "category": "Landing Pages", "rating": 4.5, "sales": 723, "tags": ["portfolio","dev","blog"] }
+    { "id": "6", "title": "Portfolio para Devs", "description": "Template de portfólio moderno com seções de projetos.", "price": 14.90, "image": "https://picsum.photos/seed/portfolio/600/400", "authorId": "2", "approved": true, "category": "Landing Pages", "rating": 4.5, "sales": 723, "tags": ["portfolio","dev","blog"] },
+    { "id": "7", "title": "Tema dark para SaaS", "description": "Tema escuro premium com componentes estilizados.", "price": 34.90, "image": "https://picsum.photos/seed/dark/600/400", "authorId": "5", "approved": false, "category": "Landing Pages", "rating": 4.2, "tags": ["dark","saas","tema"] }
   ],
   "purchases": [
     { "id": "1", "userId": "3", "productId": "1", "qty": 1, "total": 49.90, "date": "2026-04-15T10:30:00Z", "status": "completed" },
