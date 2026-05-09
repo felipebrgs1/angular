@@ -2,7 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { CurrencyBrPipe } from '../../../shared/pipes/currency-br.pipe';
+import { CurrencyBrPipe } from '@shared/pipes/currency-br.pipe';
 import { RouterLink } from '@angular/router';
 
 interface Purchase {

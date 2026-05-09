@@ -2,10 +2,10 @@ import { Component, inject, signal } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map, switchMap, shareReplay, tap } from 'rxjs/operators';
-import { ProductService } from '../../../core/services/product.service';
-import { CartService } from '../../../core/services/cart.service';
-import { NotificationService } from '../../../core/services/notification.service';
-import { CurrencyBrPipe } from '../../../shared/pipes/currency-br.pipe';
+import { ProductService } from '@core/services/product.service';
+import { CartService } from '@core/services/cart.service';
+import { NotificationService } from '@core/services/notification.service';
+import { CurrencyBrPipe } from '@shared/pipes/currency-br.pipe';
 
 @Component({
   selector: 'app-detail',

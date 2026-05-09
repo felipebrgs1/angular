@@ -1,6 +1,6 @@
 import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { CurrencyBrPipe } from '../../pipes/currency-br.pipe';
+import { CurrencyBrPipe } from '@shared/pipes/currency-br.pipe';
 
 @Component({
   selector: 'app-product-card',

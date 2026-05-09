@@ -1,11 +1,11 @@
 import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { CartService } from '../../core/services/cart.service';
-import { NotificationService } from '../../core/services/notification.service';
-import { CurrencyBrPipe } from '../../shared/pipes/currency-br.pipe';
-import { cpfValidator } from '../../shared/validators/cpf.validator';
-import { cepValidator } from '../../shared/validators/cep.validator';
+import { CartService } from '@core/services/cart.service';
+import { NotificationService } from '@core/services/notification.service';
+import { CurrencyBrPipe } from '@shared/pipes/currency-br.pipe';
+import { cpfValidator } from '@shared/validators/cpf.validator';
+import { cepValidator } from '@shared/validators/cep.validator';
 
 @Component({
   selector: 'app-checkout',

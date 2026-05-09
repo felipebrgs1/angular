@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { CartService } from '../../core/services/cart.service';
-import { CurrencyBrPipe } from '../../shared/pipes/currency-br.pipe';
+import { CartService } from '@core/services/cart.service';
+import { CurrencyBrPipe } from '@shared/pipes/currency-br.pipe';
 
 @Component({
   selector: 'app-cart',

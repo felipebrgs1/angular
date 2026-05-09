@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { CurrencyBrPipe } from '../../../shared/pipes/currency-br.pipe';
+import { CurrencyBrPipe } from '@shared/pipes/currency-br.pipe';
 
 interface Product {
   id: string;

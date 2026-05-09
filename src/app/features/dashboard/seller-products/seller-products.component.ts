@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CurrencyBrPipe } from '../../../shared/pipes/currency-br.pipe';
+import { CurrencyBrPipe } from '@shared/pipes/currency-br.pipe';
 
 interface Product {
   id: string;

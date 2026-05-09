@@ -1,7 +1,7 @@
 import { Component, ElementRef, afterNextRender, inject, signal, viewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Chart } from 'chart.js/auto';
-import { CurrencyBrPipe } from '../../../shared/pipes/currency-br.pipe';
+import { CurrencyBrPipe } from '@shared/pipes/currency-br.pipe';
 
 interface Sale {
   id: string;

@@ -1,7 +1,7 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ProductService } from '../../../core/services/product.service';
-import { ProductCardComponent } from '../../../shared/components/product-card/product-card.component';
+import { ProductService } from '@core/services/product.service';
+import { ProductCardComponent } from '@shared/components/product-card/product-card.component';
 
 @Component({
   selector: 'app-list',
