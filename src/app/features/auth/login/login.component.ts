@@ -7,8 +7,15 @@ import { AuthService } from '../../../core/services/auth.service';
   selector: 'app-login',
   standalone: true,
   imports: [ReactiveFormsModule, RouterLink],
+  styles: `
+    :host {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+  `,
   template: `
-    <div class="min-h-screen flex items-center justify-center bg-muted px-4">
+    <div class="flex-1 flex items-center justify-center bg-muted px-4">
       <div class="w-full max-w-sm">
         <h1 class="text-2xl font-bold text-center mb-8 text-foreground">Entrar</h1>
 
