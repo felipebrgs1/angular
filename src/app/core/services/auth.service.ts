@@ -21,6 +21,8 @@ export interface AuthResponse {
   user: User;
 }
 
+const COOKIE_EXPIRY_S = 7 * 24 * 60 * 60; // 7 dias
+
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private http = inject(HttpClient);
@@ -34,8 +36,27 @@ export class AuthService {
   readonly isLogged = computed(() => !!this._user());
   readonly isAdmin = computed(() => this._user()?.role === 'admin');
 
-  private get storage(): Storage | null {
-    return isPlatformServer(this.platformId) ? null : localStorage;
+  constructor() {
+    this.loadUser();
+  }
+
+  private get isBrowser(): boolean {
+    return !isPlatformServer(this.platformId);
+  }
+
+  private setCookie(name: string, value: string, maxAge: number): void {
+    if (!this.isBrowser) return;
+    document.cookie = `${name}=${encodeURIComponent(value)}; path=/; max-age=${maxAge}; SameSite=Lax`;
+  }
+
+  private getCookie(name: string): string | null {
+    if (!this.isBrowser) return null;
+    const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    return match ? decodeURIComponent(match[2]) : null;
+  }
+
+  private removeCookie(name: string): void {
+    this.setCookie(name, '', 0);
   }
 
   setReturnUrl(url: string) {
@@ -45,7 +66,8 @@ export class AuthService {
   login(credentials: LoginDto) {
     return this.http.post<AuthResponse>('/api/auth/login', credentials).pipe(
       tap(res => {
-        this.storage?.setItem('token', res.token);
+        this.setCookie('token', res.token, COOKIE_EXPIRY_S);
+        this.setCookie('user', JSON.stringify(res.user), COOKIE_EXPIRY_S);
         this._user.set(res.user);
         const target = this.returnUrl || '/marketplace';
         this.returnUrl = null;
@@ -57,7 +79,8 @@ export class AuthService {
   register(data: { name: string; email: string; password: string }) {
     return this.http.post<AuthResponse>('/api/auth/register', data).pipe(
       tap(res => {
-        this.storage?.setItem('token', res.token);
+        this.setCookie('token', res.token, COOKIE_EXPIRY_S);
+        this.setCookie('user', JSON.stringify(res.user), COOKIE_EXPIRY_S);
         this._user.set(res.user);
         this.router.navigateByUrl('/marketplace');
       }),
@@ -65,14 +88,33 @@ export class AuthService {
   }
 
   logout() {
-    this.storage?.removeItem('token');
+    this.removeCookie('token');
+    this.removeCookie('user');
     this._user.set(null);
     this.router.navigateByUrl('/');
   }
 
   loadUser() {
-    const token = this.storage?.getItem('token');
+    const token = this.getCookie('token');
     if (!token) return;
-    this.http.get<User>('/api/auth/me').subscribe(user => this._user.set(user));
+
+    const userJson = this.getCookie('user');
+    if (userJson) {
+      try {
+        this._user.set(JSON.parse(userJson));
+      } catch {}
+    }
+
+    this.http.get<User>('/api/auth/me').subscribe({
+      next: (user) => {
+        this._user.set(user);
+        this.setCookie('user', JSON.stringify(user), COOKIE_EXPIRY_S);
+      },
+      error: () => {
+        this.removeCookie('token');
+        this.removeCookie('user');
+        this._user.set(null);
+      }
+    });
   }
 }

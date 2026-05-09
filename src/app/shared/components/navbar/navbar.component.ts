@@ -9,8 +9,8 @@ import { ThemeService } from '@core/services/theme.service';
   standalone: true,
   imports: [RouterLink, RouterLinkActive],
   template: `
-    <nav class="bg-card border-b border-border sticky top-0 z-50">
-      <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+    <nav class="fixed top-0 z-50 w-full px-4 pt-4 pointer-events-none">
+      <div class="max-w-7xl mx-auto h-16 flex items-center justify-between px-6 bg-background/80 backdrop-blur-xl border border-border/50 rounded-2xl shadow-lg shadow-foreground/5 pointer-events-auto transition-all duration-300">
         <a routerLink="/" class="text-xl font-bold text-foreground">UI Templates</a>
 
         <div class="flex items-center gap-6">

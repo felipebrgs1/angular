@@ -1,4 +1,5 @@
-import { Injectable, computed, signal } from '@angular/core';
+import { Injectable, PLATFORM_ID, computed, inject, signal, effect } from '@angular/core';
+import { isPlatformServer } from '@angular/common';
 
 export interface CartItem {
   id: string;
@@ -17,6 +18,7 @@ export interface Product {
 
 @Injectable({ providedIn: 'root' })
 export class CartService {
+  private platformId = inject(PLATFORM_ID);
   private _items = signal<CartItem[]>([]);
 
   readonly items = this._items.asReadonly();
@@ -26,6 +28,22 @@ export class CartService {
   readonly count = computed(() =>
     this._items().reduce((acc, i) => acc + i.qty, 0)
   );
+
+  constructor() {
+    if (!isPlatformServer(this.platformId)) {
+      const stored = localStorage.getItem('cart');
+      if (stored) {
+        try {
+          this._items.set(JSON.parse(stored));
+        } catch (e) {}
+      }
+
+      // Effect to automatically save whenever items signal changes
+      effect(() => {
+        localStorage.setItem('cart', JSON.stringify(this._items()));
+      });
+    }
+  }
 
   add(product: Product) {
     this._items.update(items => {

@@ -9,8 +9,9 @@ module.exports = (req, res, next) => {
     }
 
     const { password: _, ...safe } = user;
+    const expiry = Date.now() + 7 * 24 * 60 * 60 * 1000;
     return res.status(200).json({
-      token: 'mock-jwt-' + user.id + '-' + Date.now(),
+      token: 'jwt-' + user.id + '-' + expiry,
       user: safe,
     });
   }
@@ -35,8 +36,9 @@ module.exports = (req, res, next) => {
     require('fs').writeFileSync('./mock/db.json', JSON.stringify(db, null, 2));
 
     const { password: _, ...safe } = newUser;
+    const expiry = Date.now() + 7 * 24 * 60 * 60 * 1000;
     return res.status(201).json({
-      token: 'mock-jwt-' + newUser.id + '-' + Date.now(),
+      token: 'jwt-' + newUser.id + '-' + expiry,
       user: safe,
     });
   }
@@ -48,7 +50,14 @@ module.exports = (req, res, next) => {
     }
 
     const db = JSON.parse(require('fs').readFileSync('./mock/db.json', 'utf-8'));
-    const userId = auth.split('-')[1];
+    const parts = auth.replace('Bearer ', '').split('-');
+    const userId = parts[1];
+    const expiry = Number(parts[2]);
+
+    if (expiry && Date.now() > expiry) {
+      return res.status(401).json({ message: 'Token expirado' });
+    }
+
     const user = db.users.find(u => u.id === userId);
 
     if (!user) return res.status(401).json({ message: 'Usuário não encontrado' });

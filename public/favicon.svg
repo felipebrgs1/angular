@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-opacity="0.05"/>
+    </filter>
+  </defs>
+  
+  <!-- Pure white rounded base -->
+  <rect x="16" y="16" width="480" height="480" rx="140" fill="#FFFFFF" filter="url(#shadow)"/>
+  
+  <!-- Sleek "UI" letters in premium dark brown -->
+  <text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle" 
+        font-family="'Inter', 'Outfit', 'Segoe UI', system-ui, sans-serif" 
+        font-weight="900" font-size="200" letter-spacing="-6"
+        fill="#5C4033">UI</text>
+</svg>
