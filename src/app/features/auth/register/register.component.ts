@@ -114,6 +114,13 @@ export const passwordMatchValidator: ValidatorFn = (control: AbstractControl): V
           Já tem conta?
           <a routerLink="/auth/login" class="text-primary hover:underline font-medium">Entrar</a>
         </p>
+
+        <div class="mt-8 p-3 bg-card border border-border rounded-lg text-xs text-muted-foreground space-y-1">
+          <p class="font-medium text-foreground/80">Contas de demonstração:</p>
+          <p><span class="text-primary">admin@email.com</span> / 123456</p>
+          <p><span class="text-primary">seller@email.com</span> / 123456</p>
+          <p><span class="text-primary">buyer@email.com</span> / 123456</p>
+        </div>
       </div>
     </div>
   `,

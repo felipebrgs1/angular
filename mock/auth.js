@@ -1,5 +1,5 @@
 module.exports = (req, res, next) => {
-  if (req.method === 'POST' && req.path === '/login') {
+  if (req.method === 'POST' && (req.path === '/login' || req.path === '/auth/login')) {
     const { email, password } = req.body;
     const db = JSON.parse(require('fs').readFileSync('./mock/db.json', 'utf-8'));
     const user = db.users.find(u => u.email === email && u.password === password);
@@ -15,7 +15,7 @@ module.exports = (req, res, next) => {
     });
   }
 
-  if (req.method === 'POST' && req.path === '/register') {
+  if (req.method === 'POST' && (req.path === '/register' || req.path === '/auth/register')) {
     const { name, email, password } = req.body;
     const db = JSON.parse(require('fs').readFileSync('./mock/db.json', 'utf-8'));
 
@@ -41,7 +41,7 @@ module.exports = (req, res, next) => {
     });
   }
 
-  if (req.method === 'GET' && req.path === '/auth/me') {
+  if (req.method === 'GET' && (req.path === '/auth/me' || req.path === '/me')) {
     const auth = req.headers.authorization;
     if (!auth || !auth.startsWith('Bearer ')) {
       return res.status(401).json({ message: 'Não autorizado' });

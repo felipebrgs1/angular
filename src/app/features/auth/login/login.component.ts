@@ -75,6 +75,13 @@ import { AuthService } from '@core/services/auth.service';
           Não tem conta?
           <a routerLink="/auth/register" class="text-primary hover:underline font-medium">Criar conta</a>
         </p>
+
+        <div class="mt-8 p-3 bg-card border border-border rounded-lg text-xs text-muted-foreground space-y-1">
+          <p class="font-medium text-foreground/80">Contas de demonstração:</p>
+          <p><span class="text-primary">admin@email.com</span> / 123456 <span class="text-foreground/60">— admin</span></p>
+          <p><span class="text-primary">seller@email.com</span> / 123456 <span class="text-foreground/60">— vendedor</span></p>
+          <p><span class="text-primary">buyer@email.com</span> / 123456 <span class="text-foreground/60">— comprador</span></p>
+        </div>
       </div>
     </div>
   `,

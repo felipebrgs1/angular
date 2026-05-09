@@ -26,6 +26,12 @@ import { CartService } from '@core/services/cart.service';
 
           @if (auth.isLogged()) {
             <div class="flex items-center gap-3">
+              <a routerLink="/dashboard" class="text-sm text-muted-foreground hover:text-foreground transition">Dashboard</a>
+
+              @if (auth.isAdmin()) {
+                <a routerLink="/admin" class="text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary font-medium hover:bg-primary/20 transition">Admin</a>
+              }
+
               <span class="text-sm text-muted-foreground">{{ auth.user()?.name }}</span>
               <button (click)="auth.logout()" class="text-sm text-muted-foreground hover:text-destructive transition">
                 Sair

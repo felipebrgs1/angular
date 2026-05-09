@@ -34,7 +34,7 @@ import { cepValidator } from '@shared/validators/cep.validator';
     <div class="flex-1">
       <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-8">
         <fieldset class="bg-card border border-border rounded-lg p-6 space-y-4">
-          <legend class="text-lg font-semibold text-foreground px-2">Endereço de entrega</legend>
+          <h3 class="text-lg font-semibold text-foreground">Endereço de entrega</h3>
 
           <div class="grid grid-cols-2 gap-4">
             <div class="col-span-2 sm:col-span-1">
@@ -103,7 +103,7 @@ import { cepValidator } from '@shared/validators/cep.validator';
         </fieldset>
 
         <fieldset class="bg-card border border-border rounded-lg p-6 space-y-4">
-          <legend class="text-lg font-semibold text-foreground px-2">Pagamento</legend>
+          <h3 class="text-lg font-semibold text-foreground">Pagamento</h3>
 
           <div>
             <label class="block text-sm font-medium text-foreground/80 mb-1">Nome no cartão</label>
