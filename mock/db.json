@@ -26,47 +26,80 @@
     {
       "id": "1",
       "title": "Dashboard Admin Pro",
-      "description": "Dashboard completo com gráficos, tabelas e dark mode.",
+      "description": "Dashboard completo com gráficos interativos, tabelas responsivas, dark mode e mais de 20 componentes prontos para usar no seu projeto administrativo.",
       "price": 49.90,
-      "image": "https://picsum.photos/seed/admin/400/300",
+      "image": "https://picsum.photos/seed/admin/600/400",
       "authorId": "2",
-      "approved": true
+      "approved": true,
+      "category": "Dashboards",
+      "rating": 4.8,
+      "sales": 234,
+      "tags": ["admin", "dashboard", "dark-mode", "charts"]
     },
     {
       "id": "2",
       "title": "Landing Page SaaS",
-      "description": "Template moderno para startups e produtos digitais.",
+      "description": "Template moderno para startups e produtos digitais. Seções de features, pricing, depoimentos e CTA otimizado para conversão.",
       "price": 29.90,
-      "image": "https://picsum.photos/seed/saas/400/300",
+      "image": "https://picsum.photos/seed/saas/600/400",
       "authorId": "2",
-      "approved": true
+      "approved": true,
+      "category": "Landing Pages",
+      "rating": 4.6,
+      "sales": 189,
+      "tags": ["saas", "landing", "startup", "conversion"]
     },
     {
       "id": "3",
       "title": "Kit de Componentes UI",
-      "description": "Conjunto de botões, cards, modais e formulários.",
+      "description": "Conjunto completo de botões, cards, modais, formulários, notificações e tabs. Perfeito para acelerar o desenvolvimento.",
       "price": 19.90,
-      "image": "https://picsum.photos/seed/ui/400/300",
+      "image": "https://picsum.photos/seed/ui/600/400",
       "authorId": "2",
-      "approved": false
+      "approved": false,
+      "category": "Kits",
+      "rating": 4.3,
+      "sales": 567,
+      "tags": ["ui", "components", "buttons", "forms"]
     },
     {
       "id": "4",
       "title": "Template E-commerce",
-      "description": "Layout completo para loja virtual com carrinho.",
+      "description": "Layout completo para loja virtual com vitrine, carrinho, checkout e painel de pedidos. Otimizado para performance e SEO.",
       "price": 39.90,
-      "image": "https://picsum.photos/seed/ecommerce/400/300",
+      "image": "https://picsum.photos/seed/ecommerce/600/400",
       "authorId": "2",
-      "approved": true
+      "approved": true,
+      "category": "Dashboards",
+      "rating": 4.7,
+      "sales": 412,
+      "tags": ["ecommerce", "loja", "carrinho", "checkout"]
     },
     {
       "id": "5",
       "title": "Dashboard Financeiro",
-      "description": "Painel com gráficos de receitas, despesas e metas.",
+      "description": "Painel com gráficos de receitas, despesas, metas financeiras e relatórios exportáveis. Ideal para fintechs e contabilidade.",
       "price": 59.90,
-      "image": "https://picsum.photos/seed/finance/400/300",
+      "image": "https://picsum.photos/seed/finance/600/400",
       "authorId": "2",
-      "approved": true
+      "approved": true,
+      "category": "Dashboards",
+      "rating": 4.9,
+      "sales": 98,
+      "tags": ["financeiro", "graficos", "fintech", "relatorios"]
+    },
+    {
+      "id": "6",
+      "title": "Portfolio para Devs",
+      "description": "Template de portfólio moderno com seções de projetos, habilidades, experiência e blog integrado.",
+      "price": 14.90,
+      "image": "https://picsum.photos/seed/portfolio/600/400",
+      "authorId": "2",
+      "approved": true,
+      "category": "Landing Pages",
+      "rating": 4.5,
+      "sales": 723,
+      "tags": ["portfolio", "dev", "blog", "projetos"]
     }
   ],
   "purchases": [],

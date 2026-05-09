@@ -1,4 +1,5 @@
-import { Injectable, computed, signal } from '@angular/core';
+import { Injectable, PLATFORM_ID, computed, inject, signal } from '@angular/core';
+import { isPlatformServer } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
@@ -22,6 +23,10 @@ export interface AuthResponse {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
+  private http = inject(HttpClient);
+  private router = inject(Router);
+  private platformId = inject(PLATFORM_ID);
+
   private _user = signal<User | null>(null);
   private returnUrl: string | null = null;
 
@@ -29,10 +34,9 @@ export class AuthService {
   readonly isLogged = computed(() => !!this._user());
   readonly isAdmin = computed(() => this._user()?.role === 'admin');
 
-  constructor(
-    private http: HttpClient,
-    private router: Router,
-  ) {}
+  private get storage(): Storage | null {
+    return isPlatformServer(this.platformId) ? null : localStorage;
+  }
 
   setReturnUrl(url: string) {
     this.returnUrl = url;
@@ -41,7 +45,7 @@ export class AuthService {
   login(credentials: LoginDto) {
     return this.http.post<AuthResponse>('/api/auth/login', credentials).pipe(
       tap(res => {
-        localStorage.setItem('token', res.token);
+        this.storage?.setItem('token', res.token);
         this._user.set(res.user);
         const target = this.returnUrl || '/marketplace';
         this.returnUrl = null;
@@ -53,7 +57,7 @@ export class AuthService {
   register(data: { name: string; email: string; password: string }) {
     return this.http.post<AuthResponse>('/api/auth/register', data).pipe(
       tap(res => {
-        localStorage.setItem('token', res.token);
+        this.storage?.setItem('token', res.token);
         this._user.set(res.user);
         this.router.navigateByUrl('/marketplace');
       }),
@@ -61,13 +65,13 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem('token');
+    this.storage?.removeItem('token');
     this._user.set(null);
     this.router.navigateByUrl('/');
   }
 
   loadUser() {
-    const token = localStorage.getItem('token');
+    const token = this.storage?.getItem('token');
     if (!token) return;
     this.http.get<User>('/api/auth/me').subscribe(user => this._user.set(user));
   }
