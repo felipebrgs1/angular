@@ -9,7 +9,10 @@
     "test": "ng test",
     "serve:ssr:angular": "node dist/angular/server/server.mjs",
     "api": "json-server --watch mock/db.json --port 3001 --middlewares mock/auth.js",
-    "dev": "npx concurrently -n api,ng \"npm run api\" \"ng serve\""
+    "dev": "npx concurrently -n api,ng \"npm run api\" \"ng serve\"",
+    "deploy": "npm run build && wrangler deploy",
+    "preview": "npm run build && wrangler dev",
+    "cf-typegen": "wrangler types"
   },
   "private": true,
   "packageManager": "npm@11.12.1",
@@ -40,6 +43,8 @@
     "prettier": "^3.8.1",
     "tailwindcss": "^4.1.12",
     "typescript": "~5.9.2",
-    "vitest": "^4.0.8"
+    "vitest": "^4.0.8",
+    "wrangler": "^4.90.0",
+    "xhr2": "^0.2.1"
   }
 }
